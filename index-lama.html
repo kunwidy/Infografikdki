@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLN UP2D Jakarta - Sistem Monitoring Distribusi Terintegrasi</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #010b14;
+            --card-surface: rgba(4, 18, 30, 0.4);
+            --neon-blue: #00f2ff;
+            --neon-green: #00ffa3;
+            --neon-red: #ff3d3d;
+            --neon-orange: #ffab00;
+            --border-ui: #0c2d44;
+            --text-main: #e2e8f0;
+            --text-dim: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: 
+                linear-gradient(rgba(12, 45, 68, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(12, 45, 68, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            padding: 15px;
+            font-size: 12px;
+        }
+
+        .cyber-card {
+            background: var(--card-surface);
+            border: 1px solid var(--border-ui);
+            position: relative;
+            padding: 12px;
+            border-radius: 2px;
+            height: 100%;
+        }
+
+        .cyber-card::before { content: ""; position: absolute; top: -1px; left: -1px; width: 8px; height: 8px; border-top: 1px solid var(--neon-blue); border-left: 1px solid var(--neon-blue); }
+        .cyber-card::after { content: ""; position: absolute; bottom: -1px; right: -1px; width: 8px; height: 8px; border-bottom: 1px solid var(--neon-blue); border-right: 1px solid var(--neon-blue); }
+
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        .glow-blue { text-shadow: 0 0 10px rgba(0, 242, 255, 0.6); }
+
+        .stat-header { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--neon-blue); margin-bottom: 10px; letter-spacing: 1px; }
+
+        /* --- Header Styles --- */
+        .main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo-box { background: var(--neon-blue); color: #000; padding: 5px 12px; border-radius: 4px; font-weight: 900; margin-right: 15px; box-shadow: 0 0 15px var(--neon-blue); }
+        .btn-cyber { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); font-size: 10px; font-weight: 700; padding: 5px 15px; }
+        .btn-cyber.active { background: rgba(0, 242, 255, 0.2); }
+
+        /* --- Ranking Section --- */
+        .ranking-item { margin-bottom: 12px; }
+        .ranking-info { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 4px; }
+        .ranking-id { color: var(--neon-blue); font-weight: 700; }
+        .stacked-progress { height: 6px; display: flex; background: #081a29; border-radius: 2px; overflow: hidden; }
+        .prog-padam { background: var(--neon-red); box-shadow: 0 0 5px var(--neon-red); height: 100%; }
+        .prog-nyala { background: var(--neon-green); box-shadow: 0 0 5px var(--neon-green); height: 100%; }
+
+        /* --- UPDATE: Pelanggan Prioritas Section --- */
+        .priority-summary {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-ui);
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .priority-summary div small { display: block; font-size: 8px; color: var(--text-dim); margin-bottom: 4px; font-weight: 700; }
+        .priority-summary div span { font-family: 'Orbitron'; font-weight: 700; font-size: 14px; }
+
+        .priority-list-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-ui);
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+        .p-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .p-item-title { font-weight: 800; font-size: 9px; display: flex; align-items: center; gap: 5px; }
+        .p-item-subtitle { font-size: 8px; color: var(--text-dim); display: block; margin-top: -2px; margin-bottom: 6px; }
+        .p-item-stats { font-size: 9px; font-weight: 700; }
+        
+        .p-progress-container { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+        .p-progress-bg { flex: 1; height: 5px; background: #081a29; border-radius: 10px; overflow: hidden; position: relative; }
+        .p-progress-fill { height: 100%; border-radius: 10px; }
+        .p-sla-val { font-size: 9px; font-weight: 800; color: var(--neon-blue); min-width: 35px; text-align: right; }
+        .p-padam-info { color: var(--neon-red); font-size: 8px; font-weight: 700; }
+        .p-eg { color: var(--text-dim); font-size: 8px; font-style: italic; }
+
+        /* --- Log Gangguan Section --- */
+        .log-tabs-container { background: rgba(0, 0, 0, 0.3); border-radius: 4px; padding: 4px; display: flex; gap: 5px; margin-bottom: 15px; }
+        .log-tab-btn { flex: 1; background: transparent; border: none; color: var(--text-dim); font-size: 9px; font-weight: 800; padding: 6px 2px; text-transform: uppercase; }
+        .log-tab-btn.active { background: #0c2131; color: #fff; border-radius: 3px; }
+
+        .table-cyber { width: 100%; color: var(--text-main); font-size: 10px; border-collapse: separate; border-spacing: 0 5px; }
+        .table-cyber th { color: var(--text-dim); text-transform: uppercase; padding: 5px; border-bottom: 1px solid var(--border-ui); font-size: 9px; }
+        .table-cyber td { padding: 10px 5px; background: rgba(255,255,255,0.02); }
+        
+        .status-pill { padding: 3px 8px; border-radius: 4px; font-size: 8px; font-weight: 800; text-transform: uppercase; border: 1px solid transparent; }
+        .pill-padam { border-color: var(--neon-red); color: var(--neon-red); }
+        .pill-pemulihan { border-color: var(--neon-blue); color: var(--neon-blue); }
+        .pill-sebagian { border-color: var(--neon-orange); color: var(--neon-orange); }
+
+        #map { height: 350px; border-radius: 2px; }
+		
+		
+		.indicator-card {
+			background: rgba(4, 18, 30, 0.4);
+			border: 1px solid #0c2d44;
+			border-radius: 6px;
+			padding: 12px;
+			position: relative;
+		}
+		
+		.ok-badge {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			color: #00ffa3;
+			border: 1px solid #00ffa3;
+			font-size: 8px;
+			padding: 1px 4px;
+			border-radius: 3px;
+			font-weight: bold;
+		}
+
+		.label-mini {
+			color: #64748b;
+			font-size: 8px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			margin-bottom: 4px;
+			display: flex;
+			align-items: center;
+			gap: 5px;
+		}
+
+		.val-main {
+			font-family: 'Orbitron', sans-serif;
+			font-weight: 700;
+			font-size: 18px;
+			margin-bottom: 2px;
+		}
+
+		.target-text {
+			color: #64748b;
+			font-size: 8px;
+		}
+
+		/* Efek Glow Spesifik */
+		.glow-cyan { color: #00f2ff; text-shadow: 0 0 8px rgba(0, 242, 255, 0.5); }
+		.glow-orange { color: #ffab00; text-shadow: 0 0 8px rgba(255, 171, 0, 0.5); }
+		.glow-green { color: #00ffa3; text-shadow: 0 0 8px rgba(0, 255, 163, 0.5); }
+
+		.chart-container-inner {
+			background: rgba(4, 18, 30, 0.2);
+			border: 1px solid #0c2d44;
+			border-radius: 4px;
+			padding: 10px;
+		}
+
+		.chart-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+
+		.chart-title {
+			color: #00f2ff;
+			font-size: 8px;
+			font-weight: 800;
+			display: flex;
+			align-items: center;
+			gap: 5px;
+		}
+
+		.total-uid {
+			text-align: right;
+		}
+		
+		/* INDICATOR STYLE */
+        .indicator-box { border: 1px solid var(--border-ui); padding: 5px; text-align: center; background: rgba(0,0,0,0.3); flex: 1; border-radius: 2px; }
+        .val-red { color: var(--neon-red); text-shadow: 0 0 5px var(--neon-red); font-weight: 700; }
+        .val-green { color: var(--neon-green); text-shadow: 0 0 5px var(--neon-green); font-weight: 700; }
+        .glow-blue { color: var(--neon-blue); text-shadow: 0 0 8px rgba(0, 242, 255, 0.5); }
+        .glow-orange { color: var(--neon-orange); text-shadow: 0 0 8px rgba(255, 171, 0, 0.5); }
+
+        /* PROGRESS BAR */
+        .progress-bar-bg { height: 4px; background: #081a29; border-radius: 2px; overflow: hidden; margin: 8px 0; }
+        .progress-fill { height: 100%; background: var(--neon-blue); box-shadow: 0 0 5px var(--neon-blue); }
+		
+    </style>
+</head>
+<body>
+
+    <div class="main-header cyber-card">
+        <div class="d-flex align-items-center">
+            <div class="logo-box">4</div>
+            <div>
+                <h5 class="mb-0 glow-blue fw-bold">PLN UP2D JAKARTA — SISTEM MONITORING DISTRIBUSI TERINTEGRASI</h5>
+                <small class="orbitron text-info" style="font-size: 9px;">((•)) LIVE • 8/5/2026, 15.43.40</small>
+            </div>
+        </div>
+        <div class="d-flex gap-2">
+            <div class="btn-group"><button class="btn btn-cyber active">SEMUA</button><button class="btn btn-cyber">GANGGUAN</button><button class="btn btn-cyber">PEMELIHARAAN</button></div>
+            <button class="btn btn-info btn-sm orbitron fw-bold" style="color:#000">EXPORT LAPORAN RESMI</button>
+        </div>
+    </div>
+
+    <div class="row g-2 mb-3">
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-red)">Beban</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">104,7 MW</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">829,51 MW</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 88.8%"></div></div><div class="text-center text-dim" style="font-size: 9px;">88,8% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">GI</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">4</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">15</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 78.9%"></div></div><div class="text-center text-dim" style="font-size: 9px;">78,9% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-orange)">Trafo</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">10</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">18</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 64.3%"></div></div><div class="text-center text-dim" style="font-size: 9px;">64,3% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">Penyulang</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">10</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">301</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 96.8%"></div></div><div class="text-center text-dim" style="font-size: 9px;">96,8% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">Gardu Distribusi</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">40</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">2.412</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 98.4%"></div></div><div class="text-center text-dim" style="font-size: 9px;">98,4% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-orange)">Pelanggan</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">35.590</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">770.658</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 95.6%"></div></div><div class="text-center text-dim" style="font-size: 9px;">95,6% Nyala</div></div></div>
+    </div>
+	<div class="col-md-12 mb-3">
+		<div class="cyber-card p-0 overflow-hidden">
+			<div id="map"></div>
+		</div>
+	</div>
+    <div class="row g-2 mb-3">
+        <div class="col-md-3">
+            <div class="d-flex flex-column gap-2" style="height: 100%;">
+                <div class="cyber-card">
+                    <div class="stat-header">RANKING GARDU DISTRIBUSI TERDAMPAK</div>
+                    <div class="ranking-list">
+                        <div class="ranking-item"><div class="ranking-info"><span>#1 <span class="ranking-id">GD-JKT-7290</span> · Gambir</span><span><span class="val-red">6</span>/<span class="val-green">2</span> · 25%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 75%"></div><div class="prog-nyala" style="width: 25%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#2 <span class="ranking-id">GD-JKT-6178</span> · Senen</span><span><span class="val-red">13</span>/<span class="val-green">9</span> · 41%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 59%"></div><div class="prog-nyala" style="width: 41%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                    </div>
+                    <div class="d-flex gap-3 mt-3 font-monospace" style="font-size: 9px;"><span class="text-danger">● Padam</span><span class="text-success">● Nyala</span></div>
+                </div>
+
+                <div class="cyber-card">
+                    <div class="stat-header d-flex justify-content-between align-items-center">
+                        <span>PELANGGAN PRIORITAS</span>
+                        <span class="text-dim" style="font-size: 8px;">230 TITIK</span>
+                    </div>
+
+                    <div class="priority-summary">
+                        <div><small>PADAM</small><span class="text-danger">14</span></div>
+                        <div><small>NYALA</small><span class="text-success">216</span></div>
+                        <div><small>SLA</small><span class="glow-blue">93,9%</span></div>
+                    </div>
+
+                    <div class="priority-list">
+                        <div class="priority-list-item">
+                            <div class="p-item-header">
+                                <span class="p-item-title"><span class="text-info">👑</span> VVIP</span>
+                                <span class="p-item-stats text-dim">17/18</span>
+                            </div>
+                            <span class="p-item-subtitle">Istana, Setneg, Obvitnas</span>
+                            <div class="p-progress-container">
+                                <div class="p-progress-bg"><div class="p-progress-fill" style="width: 94.4%; background: linear-gradient(90deg, #00f2ff, #00ffa3);"></div></div>
+                                <span class="p-sla-val">94,4%</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="p-padam-info">● 1 padam</span>
+                                <span class="p-eg">e.g. Istana Negara</span>
+                            </div>
+                        </div>
+
+                        <div class="priority-list-item">
+                            <div class="p-item-header">
+                                <span class="p-item-title"><span class="text-warning">⭐</span> VIP</span>
+                                <span class="p-item-stats text-dim">52/56</span>
+                            </div>
+                            <span class="p-item-subtitle">Kementerian, Kedubes</span>
+                            <div class="p-progress-container">
+                                <div class="p-progress-bg"><div class="p-progress-fill" style="width: 92.9%; background: linear-gradient(90deg, #ffab00, #00ffa3);"></div></div>
+                                <span class="p-sla-val">92,9%</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="p-padam-info">● 4 padam</span>
+                                <span class="p-eg">e.g. Kemenkeu</span>
+                            </div>
+                        </div>
+
+                        <div class="priority-list-item">
+                            <div class="p-item-header">
+                                <span class="p-item-title"><span class="text-danger">🛡️</span> KTT</span>
+                                <span class="p-item-stats text-dim">30/32</span>
+                            </div>
+                            <span class="p-item-subtitle">Event Kenegaraan Aktif</span>
+                            <div class="p-progress-container">
+                                <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ff3d3d, #00ffa3);"></div></div>
+                                <span class="p-sla-val">93,8%</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="p-padam-info">● 2 padam</span>
+                                <span class="p-eg">e.g. JCC Senayan</span>
+                            </div>
+                        </div>
+
+                        <div class="priority-list-item">
+                            <div class="p-item-header">
+                                <span class="p-item-title"><span class="text-info">⚡</span> PRIORITAS</span>
+                                <span class="p-item-stats text-dim">117/124</span>
+                            </div>
+                            <span class="p-item-subtitle">RS, PDAM, Bandara</span>
+                            <div class="p-progress-container">
+                                <div class="p-progress-bg"><div class="p-progress-fill" style="width: 94.4%; background: linear-gradient(90deg, #00f2ff, #00ffa3);"></div></div>
+                                <span class="p-sla-val">94,4%</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="p-padam-info">● 7 padam</span>
+                                <span class="p-eg">e.g. RSCM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		
+        <div class="col-md-6">
+            <div class="cyber-card p-0 overflow-hidden">
+                <div style="padding: 10px; border-top: 1px solid var(--border-ui)">
+                    <div class="stat-header" style="font-size: 8px;">Kurva Beban Padam & Nyala</div>
+                    <div id="areaChart" style="height: 120px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="cyber-card">
+                <div class="stat-header d-flex align-items-center">
+                    <span class="text-danger me-2" style="font-size: 14px;">●</span> LOG GANGGUAN REAL-TIME
+                </div>
+                <div class="log-tabs-container">
+                    <button class="log-tab-btn active">GI</button><button class="log-tab-btn">TRAFO</button><button class="log-tab-btn">PENYULANG</button><button class="log-tab-btn">GARDU DIST</button>
+                </div>
+                <table class="table-cyber">
+                    <thead><tr><th>GI</th><th>PADAM</th><th>NYALA</th><th>AET</th><th>WILAYAH</th><th>STATUS</th></tr></thead>
+                    <tbody>
+                        <tr><td class="obj-name">GI Kemayoran</td><td class="val-red">08:12</td><td class="text-dim">—</td><td class="aet-val">02:30</td><td>Jakpus</td><td><span class="status-pill pill-padam">Padam</span></td></tr>
+                        <tr><td class="obj-name">GI Pulomas</td><td class="val-red">09:02</td><td class="val-green">11:45</td><td class="aet-val">02:43</td><td>Jaktim</td><td><span class="status-pill pill-pemulihan">Pemulihan</span></td></tr>
+                        <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="cyber-card mb-3">
+		<div class="d-flex justify-content-between mb-3">
+			<div class="stat-header m-0"><span style="font-size: 14px;">🛡️</span> DASHBOARD SLA LENGKAP</div>
+			<div class="text-dim" style="font-size: 8px;">Periode: Mei 2026</div>
+		</div>
+
+		<div class="row g-2 mb-3">
+			<div class="col-md-3">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini">🕒 SAIDI</div>
+					<div class="val-main glow-cyan">33,4 mnt</div>
+					<div class="target-text">Target ≤ 60 mnt</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini">📈 SAIFI</div>
+					<div class="val-main glow-cyan">0,42 kali</div>
+					<div class="target-text">Target ≤ 1,0</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini">⚡ ENS</div>
+					<div class="val-main glow-orange">1.930,29 MWh</div>
+					<div class="target-text">Target ≤ 2.500</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini">💰 RUPIAH</div>
+					<div class="val-main glow-green">Rp 2,01 M</div>
+					<div class="target-text">Target ≤ Rp 3 M</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row g-2 mb-3">
+			<div class="col-md-6">
+				<div class="chart-container-inner mb-2">
+					<div class="chart-header">
+						<div class="chart-title">📈 SAIDI PER UP3 (MENIT)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block" style="font-size: 6px;">TOTAL UID</small>
+							<span class="glow-cyan orbitron" style="font-size: 11px;">195,1 mnt</span>
+						</div>
+					</div>
+					<div id="chartSaidi" style="height: 120px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner mb-2">
+					<div class="chart-header">
+						<div class="chart-title">📊 SAIFI PER UP3 (KALI)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block" style="font-size: 6px;">TOTAL UID</small>
+							<span class="glow-cyan orbitron" style="font-size: 11px;">2,57 kali</span>
+						</div>
+					</div>
+					<div id="chartSaifi" style="height: 120px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner">
+					<div class="chart-header">
+						<div class="chart-title" style="color:#ffab00;">⚡ ENS PER UP3 (MWH)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block" style="font-size: 6px;">TOTAL UID</small>
+							<span class="glow-orange orbitron" style="font-size: 11px;">2.069,90 MWh</span>
+						</div>
+					</div>
+					<div id="chartEns" style="height: 120px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner">
+					<div class="chart-header">
+						<div class="chart-title" style="color:#00ffa3;">💸 RUPIAH PER UP3 (MILYAR)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block" style="font-size: 6px;">TOTAL UID</small>
+							<span class="glow-green orbitron" style="font-size: 11px;">Rp 2,14 Milyar</span>
+						</div>
+					</div>
+					<div id="chartRupiah" style="height: 120px;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row g-2">
+			<div class="col-md-12">
+			<div class="cyber-card">
+				<div class="stat-header">Detail SLA Per Wilayah</div>
+				<table class="table-cyber text-center">
+					<thead><tr><th>Wilayah</th><th>SLA (%)</th><th>Target (%)</th><th>Selisih</th><th>Status</th></tr></thead>
+					<tbody>
+						<tr><td>Jkt Pusat</td><td class="text-info orbitron">96,20</td><td>95,00</td><td class="text-success">+1,20</td><td><span class="status-badge status-ok">MEMENUHI</span></td></tr>
+						<tr><td>Jkt Utara</td><td class="text-info orbitron">93,40</td><td>95,00</td><td class="text-danger">-1,60</td><td><span class="status-badge status-fail">DI BAWAH</span></td></tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        var map = L.map('map').setView([-6.2088, 106.8456], 11);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        
+		
+		// Konfigurasi Highcharts agar warnanya pas
+		const commonOptions = {
+			chart: { backgroundColor: 'transparent', type: 'column', marginTop: 10 },
+			title: { text: null },
+			xAxis: { 
+				categories: ['UP3 Menteng', 'UP3 Kbn Jeruk', 'UP3 Tj. Priok', 'UP3 Lenteng A.', 'UP3 Pondok K.', 'UP3 Bandengan'],
+				labels: { style: { color: '#64748b', fontSize: '7px' } },
+				lineWidth: 1, lineColor: '#0c2d44'
+			},
+			yAxis: { 
+				title: { text: null }, 
+				gridLineColor: 'rgba(12, 45, 68, 0.5)',
+				labels: { style: { color: '#64748b', fontSize: '7px' } }
+			},
+			legend: { enabled: false },
+			credits: { enabled: false },
+			plotOptions: {
+				column: { borderRadius: 1, borderWidth: 0 }
+			}
+		};
+
+		Highcharts.chart('chartSaidi', { ...commonOptions, series: [{ data: [28, 42, 35, 25, 33, 30], color: '#00f2ff' }] });
+		Highcharts.chart('chartSaifi', { ...commonOptions, series: [{ data: [0.38, 0.55, 0.49, 0.31, 0.45, 0.40], color: '#00f2ff' }] });
+		Highcharts.chart('chartEns', { ...commonOptions, series: [{ data: [310, 460, 400, 270, 350, 290], color: '#ffab00' }] });
+		Highcharts.chart('chartRupiah', { ...commonOptions, series: [{ data: [0.32, 0.47, 0.41, 0.28, 0.36, 0.30], color: '#00ffa3' }] });
+    </script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLN UP2D Jakarta - Sistem Monitoring Distribusi Terintegrasi</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+   
+    <!-- header -->
+    <header class="main-header cyber-card flex items-center justify-between flex-wrap gap-3 mb-5">
+        <div class="d-flex align-items-center">
+            <div class="logo-box fs-3">⚡</div>
+            <div>
+                <h5 class="mb-0 glow-blue fw-bold">PLN UP2D JAKARTA — SISTEM MONITORING DISTRIBUSI TERINTEGRASI</h5>
+                <small class="orbitron text-info" style="font-size: 9px;">((•)) LIVE • 8/5/2026, 15.43.40</small>
+            </div>
+        </div>
+        <div class="d-flex gap-2">
+            <div class="btn-group"><button class="btn btn-cyber active">SEMUA</button><button class="btn btn-cyber">GANGGUAN</button><button class="btn btn-cyber">PEMELIHARAAN</button></div>
+            <button class="btn btn-info btn-sm orbitron fw-bold" style="color:#000">Export Laporan Resmi</button>
+        </div>
+    </header>
+
+    <!-- section 1-->
+     <section class="row row-cols-lg-6 row-cols-md-3 row-cols-2 row-cols-1 g-3 mb-5">
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-red)">Beban</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">104,7 MW</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">829,51 MW</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 88.8%"></div></div><div class="text-center text-cyan" style="font-size: 10px;">Pemulihan : 88,8% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">GI</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">4</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">15</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 78.9%"></div></div><div class="text-center text-cyan" style="font-size: 10px;">Pemulihan : 78,9% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">Trafo</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">10</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">18</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 64.3%"></div></div><div class="text-center text-cyan" style="font-size: 10px;">Pemulihan : 64,3% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">Penyulang</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">10</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">301</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 96.8%"></div></div><div class="text-center text-cyan" style="font-size: 10px;">Pemulihan : 96,8% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-blue)">Gardu Distribusi</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">40</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">2.412</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 98.4%"></div></div><div class="text-center text-cyan" style="font-size: 10px;">Pemulihan : 98,4% Nyala</div></div></div>
+        <div class="col"><div class="cyber-card"><div class="stat-header text-center" style="color:var(--neon-orange)">Pelanggan</div><div class="d-flex gap-1"><div class="indicator-box"><small class="text-dim d-block">PADAM</small><span class="orbitron val-red">35.590</span></div><div class="indicator-box"><small class="text-dim d-block">NYALA</small><span class="orbitron val-green">770.658</span></div></div><div class="progress-bar-bg"><div class="progress-fill" style="width: 95.6%"></div></div><div class="text-center text-cyan" style="font-size: 10px;">Pemulihan : 95,6% Nyala</div></div></div>
+    </section>
+
+    <!-- section map -->
+    <section class="row g-3 mb-5">   
+        <div class="col-12">
+            <div class="cyber-card p-0 overflow-hidden">
+                <div class="chart-container-inner" style="border: none; background: transparent;">
+                    <div class="stat-header mb-2 fs-7 text-center">Peta Beban Padam & Nyala</div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 2-->
+    <section class="cyber-card mb-5">
+
+        <div class="d-flex justify-content-between mb-4">
+			<div class="stat-header m-0">KINERJA &  PRIORITAS PELANGGAN</div>
+			<div class="text-dim fs-8">230 TITIK</div>
+		</div>
+
+		<div class="row g-3">
+			<div class="col-md-3 col-sm-6">
+				<div class="priority-list-item border-red">
+                    <div class="p-item-header">
+                        <span class="p-item-title"><span class="text-info">👑</span> VVIP</span>
+                        <span class="p-item-stats text-dim">1/18</span>
+                    </div>
+                    <span class="p-item-subtitle">Istana, Setneg, Obvitnas</span>
+                    <div class="p-progress-container pt-1">
+                        <div class="p-progress-bg"><div class="p-progress-fill" style="width: 94.4%; background: linear-gradient(90deg, #00f2ff, #00ffa3);"></div></div>
+                        <span class="p-sla-val">94,4%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="p-padam-info">● 1 padam</span>
+                        <span class="p-nyala-info">● 17 Nyala</span>
+                    </div>
+                </div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="priority-list-item border-orange">
+                    <div class="p-item-header">
+                        <span class="p-item-title"><span class="text-warning">⭐</span> VIP</span>
+                        <span class="p-item-stats text-dim">4/14</span>
+                    </div>
+                    <span class="p-item-subtitle">Kementerian, Kedubes</span>
+                    <div class="p-progress-container pt-1">
+                        <div class="p-progress-bg"><div class="p-progress-fill" style="width: 92.9%; background: linear-gradient(90deg, #ffab00, #00ffa3);"></div></div>
+                        <span class="p-sla-val">92,9%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="p-padam-info">● 4 padam</span>
+                        <span class="p-nyala-info">● 10 Nyala</span>
+                    </div>
+                </div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="priority-list-item border-blue">
+                    <div class="p-item-header">
+                        <span class="p-item-title"><span class="text-danger">🛡️</span> KTT</span>
+                        <span class="p-item-stats text-dim">1/10</span>
+                    </div>
+                    <span class="p-item-subtitle">Event Kenegaraan Aktif</span>
+                    <div class="p-progress-container pt-1">
+                        <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ff3d3d, #00ffa3);"></div></div>
+                        <span class="p-sla-val">93,8%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="p-padam-info">● 1 padam</span>
+                        <span class="p-nyala-info">● 9 Nyala</span>
+                    </div>
+                </div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="priority-list-item border-green">
+                    <div class="p-item-header">
+                        <span class="p-item-title"><span class="text-info">⚡</span> PRIORITAS</span>
+                        <span class="p-item-stats text-dim">7/27</span>
+                    </div>
+                    <span class="p-item-subtitle">RS, PDAM, Bandara</span>
+                    <div class="p-progress-container pt-1">
+                        <div class="p-progress-bg"><div class="p-progress-fill" style="width: 94.4%; background: linear-gradient(90deg, #00f2ff, #00ffa3);"></div></div>
+                        <span class="p-sla-val">94,4%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="p-padam-info">● 7 padam</span>
+                        <span class="p-nyala-info">● 20 Nyala</span>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+    </section>
+
+    <!-- section 2-->
+    <section class="row g-3 mb-5">
+        <!-- left -->
+        <div class="col-md-3">
+            <div class="d-flex flex-column gap-4" >
+                <div class="cyber-card">
+                    <div class="stat-header">RANKING GARDU DISTRIBUSI TERDAMPAK</div>
+                    <div class="ranking-list custom-scroll-left">
+                        <div class="ranking-item"><div class="ranking-info"><span>#1 <span class="ranking-id">GD-JKT-7290</span> · Gambir</span><span><span class="val-red">6</span>/<span class="val-green">2</span> · 25%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 75%"></div><div class="prog-nyala" style="width: 25%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#2 <span class="ranking-id">GD-JKT-6178</span> · Senen</span><span><span class="val-red">13</span>/<span class="val-green">9</span> · 41%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 59%"></div><div class="prog-nyala" style="width: 41%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                        <div class="ranking-item"><div class="ranking-info"><span>#3 <span class="ranking-id">GD-JKT-5562</span> · Cempaka P.</span><span><span class="val-red">8</span>/<span class="val-green">7</span> · 47%</span></div><div class="stacked-progress"><div class="prog-padam" style="width: 53%"></div><div class="prog-nyala" style="width: 47%"></div></div></div>
+                    </div>
+                    <div class="d-flex gap-3 mt-3 font-monospace" style="font-size: 9px;"><span class="text-danger">● Padam</span><span class="text-success">● Nyala</span></div>
+                </div>
+                
+            </div>
+        </div>
+		
+		<!-- center -->
+        <div class="col-md-6 d-flex flex-column gap-3">
+             <!-- chart -->
+            <div class="cyber-card p-0 overflow-hidden">
+                <div class="chart-container-inner" style="border: none; background: transparent;">
+                    <div class="stat-header mb-2" style="font-size: 10px;">Kurva Beban Padam & Nyala</div>
+                    <div id="areaChart" style="height: 360px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- right -->
+        <div class="col-md-3">
+            <div class="cyber-card">
+                <div class="stat-header d-flex align-items-center">
+                    <span class="text-danger me-2" style="font-size: 14px;">●</span> LOG GANGGUAN REAL-TIME
+                </div>
+                <div class="log-tabs-container">
+                    <button class="log-tab-btn active">GI</button><button class="log-tab-btn">TRAFO</button><button class="log-tab-btn">PENYULANG</button><button class="log-tab-btn">GARDU DIST</button>
+                </div>
+                <div class="custom-scroll">
+                    <table class="table-cyber">
+                        <thead><tr><th>GI</th><th>PADAM</th><th>NYALA</th><th>AET</th><th>WILAYAH</th><th>STATUS</th></tr></thead>
+                        <tbody>
+                            <tr><td class="obj-name">GI Kemayoran</td><td class="val-red">08:12</td><td class="text-dim">—</td><td class="aet-val">02:30</td><td>Jakpus</td><td><span class="status-pill pill-padam">Padam</span></td></tr>
+                            <tr><td class="obj-name">GI Pulomas</td><td class="val-red">09:02</td><td class="val-green">11:45</td><td class="aet-val">02:43</td><td>Jaktim</td><td><span class="status-pill pill-pemulihan">Pemulihan</span></td></tr>
+                            <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                            <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                            <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                            <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                            <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                            <tr><td class="obj-name">GI Cawang</td><td class="val-red">09:18</td><td class="text-dim">—</td><td class="aet-val">01:50</td><td>Jaktim</td><td><span class="status-pill pill-sebagian">Sebagian</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 3-->
+    <section class="cyber-card mb-5">
+		<div class="d-flex justify-content-between mb-4">
+			<div class="stat-header m-0 fs-6"><span style="font-size: 14px;">🛡️</span> DASHBOARD SLA LENGKAP</div>
+			<div class="text-dim fs-8">Periode: Mei 2026</div>
+		</div>
+
+		<div class="row g-3 mb-4">
+			<div class="col-md-3 col-sm-6">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini fs-6 text-white">🕒 SAIDI</div>
+					<div class="val-main val-red">33,4 mnt</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini fs-6 text-white">📈 SAIFI</div>
+					<div class="val-main glow-cyan">0,42 kali</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini fs-6 text-white">⚡ ENS</div>
+					<div class="val-main glow-orange">1.930,29 MWh</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="indicator-card">
+					<span class="ok-badge">OK</span>
+					<div class="label-mini fs-6 text-white">💰 RUPIAH</div>
+					<div class="val-main glow-green">Rp 2,01 M</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row g-3 mb-4">
+			<div class="col-md-6">
+				<div class="chart-container-inner mb-2">
+					<div class="chart-header">
+						<div class="chart-title">📈 SAIDI PER UP3 (MENIT)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block fs-7">TOTAL UID</small>
+							<span class="glow-cyan orbitron" style="font-size: 11px;">195,1 mnt</span>
+						</div>
+					</div>
+					<div id="chartSaidi" style="height: 120px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner mb-2">
+					<div class="chart-header">
+						<div class="chart-title">📊 SAIFI PER UP3 (KALI)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block fs-7">TOTAL UID</small>
+							<span class="glow-cyan orbitron" style="font-size: 11px;">2,57 kali</span>
+						</div>
+					</div>
+					<div id="chartSaifi" style="height: 120px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner">
+					<div class="chart-header">
+						<div class="chart-title" style="color:#ffab00;">⚡ ENS PER UP3 (MWH)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block fs-7">TOTAL UID</small>
+							<span class="glow-orange orbitron" style="font-size: 11px;">2.069,90 MWh</span>
+						</div>
+					</div>
+					<div id="chartEns" style="height: 120px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner">
+					<div class="chart-header">
+						<div class="chart-title" style="color:#00ffa3;">💸 RUPIAH PER UP3 (MILYAR)</div>
+						<div class="total-uid">
+							<small class="text-dim d-block fs-7">TOTAL UID</small>
+							<span class="glow-green orbitron" style="font-size: 11px;">Rp 2,14 Milyar</span>
+						</div>
+					</div>
+					<div id="chartRupiah" style="height: 120px;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row g-2">
+			<div class="col-md-12">
+			<div class="cyber-card">
+				<div class="stat-header fs-6 text-center">Detail SLA Per Wilayah</div>
+				<table class="table-cyber text-center">
+					<thead><tr><th>Wilayah</th><th>SLA (%)</th><th>Target (%)</th><th>Selisih</th><th>Status</th></tr></thead>
+					<tbody>
+						<tr><td>Jkt Pusat</td><td class="text-info orbitron">96,20</td><td>95,00</td><td class="text-success">+1,20</td><td><span class="status-badge status-ok">MEMENUHI</span></td></tr>
+						<tr><td>Jkt Utara</td><td class="text-info orbitron">93,40</td><td>95,00</td><td class="text-danger">-1,60</td><td><span class="status-badge status-fail">DI BAWAH</span></td></tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <footer class="text-center font-mono text-cyan py-2">© 2026 PT PLN (Persero) UP2D Jakarta — Integrated Command Center</footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        var map = L.map('map').setView([-6.2088, 106.8456], 11);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        
+		
+		// Konfigurasi Highcharts agar warnanya pas
+		const commonOptions = {
+			chart: { backgroundColor: 'transparent', type: 'column', marginTop: 10 },
+			title: { text: null },
+			xAxis: { 
+				categories: ['UP3 Menteng', 'UP3 Kbn Jeruk', 'UP3 Tj. Priok', 'UP3 Lenteng A.', 'UP3 Pondok K.', 'UP3 Bandengan'],
+				labels: { style: { color: '#64748b', fontSize: '9px' } },
+				lineWidth: 1, lineColor: '#0c2d44'
+			},
+			yAxis: { 
+				title: { text: null }, 
+				gridLineColor: 'rgba(12, 45, 68, 0.5)',
+				labels: { style: { color: '#64748b', fontSize: '9px' } }
+			},
+			legend: { enabled: false },
+			credits: { enabled: false },
+			plotOptions: {
+				column: { borderRadius: 1, borderWidth: 0 }
+			}
+		};
+
+		Highcharts.chart('areaChart', {
+			chart: { backgroundColor: 'transparent', type: 'areaspline', marginTop: 30 },
+			title: { text: null },
+			xAxis: { 
+				categories: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', 'Live'],
+				labels: { style: { color: '#64748b', fontSize: '9px' } },
+				lineColor: '#0c2d44'
+			},
+			yAxis: { 
+				title: { text: null }, 
+				gridLineColor: 'rgba(12, 45, 68, 0.2)',
+				labels: { style: { color: '#64748b', fontSize: '9px' } }
+			},
+			legend: { 
+				enabled: true, 
+				itemStyle: { color: '#e2e8f0', fontSize: '9px' },
+				align: 'right', verticalAlign: 'top', floating: true, y: -10
+			},
+			credits: { enabled: false },
+			plotOptions: { areaspline: { fillOpacity: 0.15, marker: { enabled: false }, lineWidth: 2 } },
+			series: [
+				{ name: 'Beban Nyala (MW)', data: [800, 780, 850, 910, 890, 840, 829.5], color: '#00ffa3' },
+				{ name: 'Beban Padam (MW)', data: [20, 15, 80, 120, 95, 100, 104.7], color: '#ff3d3d' }
+			]
+		});
+
+		Highcharts.chart('chartSaidi', { ...commonOptions, series: [{ data: [28, 42, 35, 25, 33, 30], color: '#FF3D3D' }] });
+		Highcharts.chart('chartSaifi', { ...commonOptions, series: [{ data: [0.38, 0.55, 0.49, 0.31, 0.45, 0.40], color: '#00f2ff' }] });
+		Highcharts.chart('chartEns', { ...commonOptions, series: [{ data: [310, 460, 400, 270, 350, 290], color: '#ffab00' }] });
+		Highcharts.chart('chartRupiah', { ...commonOptions, series: [{ data: [0.32, 0.47, 0.41, 0.28, 0.36, 0.30], color: '#00ffa3' }] });
+    </script>
+</body>
+</html>

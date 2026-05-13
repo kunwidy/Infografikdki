@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLN UP2D Jakarta - Sistem Monitoring Distribusi Terintegrasi</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+   
+    <!-- header -->
+    <header class="main-header cyber-card gradient-green flex items-center justify-between flex-wrap gap-3 mb-5">
+        <div class="d-flex align-items-center">
+            <div class="logo-box">
+                <img src="img/logo.jpg" alt="PLN UP2D Jakarta " class="logo-img">
+            </div>
+            <div>
+                <span class="fw-bold fs-6">PLN UP2D JAKARTA </span>
+            </div>
+        </div>
+        <div class="text-center">
+            <h2 class="fs-5 fw-bold text-white mb-0">INFOGRAFIS PEMULIHAN KELISTRIKAN DKI JAKARTA</h2>
+            <span class="text-light-blue fs-6">Kondisi terdampak pada : 8/5/2026, 15.43.40</span>
+        </div>
+        <div class="d-flex gap-2">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                <button type="button" class="btn btn-info active">Semua</button>
+                <button type="button" class="btn btn-info">Gangguan</button>
+                <button type="button" class="btn btn-info">Pemeliharaan</button>
+            </div>
+            <button type="button" class="btn btn-warning"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+            Export Data
+            </button>
+        </div>
+    </header>
+
+    <!-- section 1-->
+     <section class="row row-cols-lg-6 row-cols-md-3 row-cols-2 row-cols-1 g-3 mb-4">
+        <div class="col">
+            <div class="cyber-card">
+                <div class="stat-header"><i class="bi bi-activity"></i> Beban</div>
+                <div class="d-flex mb-1">
+                    <div class="indicator-box gradient-red text-white">
+                        <small class="d-block fw-bold fs-10">PADAM</small>
+                        <span class="fs-5 fw-medium">104,7<small class="fs-10">MW</small></span>
+                    </div>
+                    <div class="indicator-box gradient-blue text-white">
+                        <small class="d-block fw-bold fs-10">NYALA</small>
+                        <span class=" fs-5 fw-medium">829,51<small class="fs-10">MW</small></span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: 88.8%"></div>
+                </div>
+                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cyber-card">
+                <div class="stat-header"><i class="bi bi-activity"></i> GI</div>
+                <div class="d-flex mb-1">
+                    <div class="indicator-box gradient-red text-white">
+                        <small class="d-block fw-bold fs-10">PADAM</small>
+                        <span class="fs-5 fw-medium">4</span>
+                    </div>
+                    <div class="indicator-box gradient-blue text-white">
+                        <small class="d-block fw-bold fs-10">NYALA</small>
+                        <span class="fs-5 fw-medium">10</span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: 88.8%"></div>
+                </div>
+                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cyber-card">
+                <div class="stat-header"><i class="bi bi-activity"></i> Trafo</div>
+                <div class="d-flex mb-1">
+                    <div class="indicator-box gradient-red text-white">
+                        <small class="d-block fw-bold fs-10">PADAM</small>
+                        <span class="fs-5 fw-medium">16</span>
+                    </div>
+                    <div class="indicator-box gradient-blue text-white">
+                        <small class="d-block fw-bold fs-10">NYALA</small>
+                        <span class="fs-5 fw-medium">67</span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: 88.8%"></div>
+                </div>
+                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cyber-card">
+                <div class="stat-header"><i class="bi bi-activity"></i> Penyulang</div>
+                <div class="d-flex mb-1">
+                    <div class="indicator-box gradient-red text-white">
+                        <small class="d-block fw-bold fs-10">PADAM</small>
+                        <span class="fs-5 fw-medium">39</span>
+                    </div>
+                    <div class="indicator-box gradient-blue text-white">
+                        <small class="d-block fw-bold fs-10">NYALA</small>
+                        <span class="fs-5 fw-medium">90</span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: 88.8%"></div>
+                </div>
+                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cyber-card">
+                <div class="stat-header"><i class="bi bi-activity"></i> Gardu Distribusi</div>
+                <div class="d-flex mb-1">
+                    <div class="indicator-box gradient-red text-white">
+                        <small class="d-block fw-bold fs-10">PADAM</small>
+                        <span class="fs-5 fw-medium">77</span>
+                    </div>
+                    <div class="indicator-box gradient-blue text-white">
+                        <small class="d-block fw-bold fs-10">NYALA</small>
+                        <span class="fs-5 fw-medium">241</span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: 88.8%"></div>
+                </div>
+                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cyber-card">
+                <div class="stat-header"><i class="bi bi-activity"></i> Pelanggan</div>
+                <div class="d-flex mb-1">
+                    <div class="indicator-box gradient-red text-white">
+                        <small class="d-block fw-bold fs-10">PADAM</small>
+                        <span class="fs-5 fw-medium">421</span>
+                    </div>
+                    <div class="indicator-box gradient-blue text-white">
+                        <small class="d-block fw-bold fs-10">NYALA</small>
+                        <span class="fs-5 fw-medium">1.982</span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: 88.8%"></div>
+                </div>
+                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+            </div>
+        </div>
+    </section>
+     <!-- section 2-->
+    <section class="row g-3 mb-5">
+        <!-- left -->
+        <div class="col-md-4">
+            <div class="d-flex flex-column gap-4" >
+                
+                <!-- pelanggan -->
+                <div class="cyber-card">
+                    <div class="stat-header d-flex justify-content-between align-items-center mb-4">
+                        <span><i class="bi bi-person-bounding-box"></i> PRIORITAS PELANGGAN</span>
+                        <span class="status-pill pill-nyala">230 titik</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="priority-list-item bg-red text-dark">
+                                <div class="p-item-header">
+                                    <span class="p-item-title text-dark"><i class="bi bi-stars"></i> VVIP</span>
+                                    <span class="p-item-stats text-yellow">1/18</span>
+                                </div>
+                                <span class="p-item-subtitle text-yellow">Istana, Setneg, Obvitnas</span>
+                                <div class="p-progress-container pt-1">
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center text-white">
+                                    <span class="fs-7 fw-semibold">● 1 padam</span>
+                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="priority-list-item bg-orange">
+                                <div class="p-item-header">
+                                    <span class="p-item-title text-dark"><i class="bi bi-star-fill"></i> VIP</span>
+                                    <span class="p-item-stats text-yellow">1/18</span>
+                                </div>
+                                <span class="p-item-subtitle text-yellow">Istana, Setneg, Obvitnas</span>
+                                <div class="p-progress-container pt-1">
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center text-white">
+                                    <span class="fs-7 fw-semibold">● 1 padam</span>
+                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="priority-list-item bg-blue ">
+                                <div class="p-item-header">
+                                    <span class="p-item-title text-dark"><i class="bi bi-star-half"></i> KTT </span>
+                                    <span class="p-item-stats text-light-blue">1/18</span>
+                                </div>
+                                <span class="p-item-subtitle text-light-blue">Istana, Setneg, Obvitnas</span>
+                                <div class="p-progress-container pt-1">
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center text-white">
+                                    <span class="fs-7 fw-semibold">● 1 padam</span>
+                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="priority-list-item bg-green text-dark">
+                                <div class="p-item-header">
+                                    <span class="p-item-title text-dark"><i class="bi bi-star"></i> PRIORITAS</span>
+                                    <span class="p-item-stats text-yellow">1/18</span>
+                                </div>
+                                <span class="p-item-subtitle text-yellow">Istana, Setneg, Obvitnas</span>
+                                <div class="p-progress-container pt-1">
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center text-white">
+                                    <span class="fs-7 fw-semibold">● 1 padam</span>
+                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /pelanggan-->
+
+                <div class="cyber-card">
+                    <div class="stat-header"><i class="bi bi-tools"></i> RANKING GARDU UP3 TERDAMPAK</div>
+                    <div class="table-responsive mx-0">
+                        <table class="table table-sm align-middle table-row-dashed fs-8 mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>UP3</th>
+                                    <th class="text-center">Padam</th>
+                                    <th class="text-center">Nyala</th>
+                                    <th class="text-end">Persentase</th>
+                                </tr>
+                            </thead>
+                            <tbody class="custom-scroll-left">
+                                <tr>
+                                    <td>1</td>
+                                    <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">100</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">12</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Bulungan</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">80</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">22</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Kebon Jeruk</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">75</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">28</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Cengkareng</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">60</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">31</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Tanjung Priok</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">50</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">38</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Bandengan</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">48</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">40</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Cempaka Putih</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">30</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">50</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Kramat Jati</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">8</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">56</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Jatinegara</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">4</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">68</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Pondok Kopi</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">2</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">72</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>Bintaro</td>
+                                    <td class="text-center"><span class="status-pill pill-red fs-8">1</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">80</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
+                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>    
+            </div>
+        </div>
+		
+		<!-- center -->
+        <div class="col-md-4 d-flex flex-column gap-3">
+            <!-- map -->
+            <div class="cyber-card p-0 overflow-hidden">
+                <div class="chart-container-inner" style="border: none; background: transparent;">
+                    <div class="stat-header mb-2 fs-7 text-center"><i class="bi bi-geo-fill"></i> Peta Padam & Nyala</div>
+                    <div id="map" style="height: 500px;"></div>
+                </div>
+                
+            </div>
+             <!-- chart -->
+            <div class="cyber-card p-0 overflow-hidden">
+                <div class="chart-container-inner">
+                    <div class="stat-header mb-2 text-center"><i class="bi bi-clipboard2-data-fill"></i> Kurva Beban Padam & Nyala</div>
+                    <div id="areaChart" style="height: 250px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- right -->
+        <div class="col-md-4">
+            <div class="d-flex flex-column gap-4" >
+                <!-- kinerja-->
+                <div class="cyber-card">
+                    <div class="stat-header d-flex justify-content-between align-items-center mb-4">
+                        <span><i class="bi bi-speedometer"></i> KINERJA</span>
+                        <span class="status-pill pill-nyala">230 titik</span>
+                    </div>
+                    <div class="d-flex justify-content-evenly mb-4">
+                        <div class="flex d-flex flex-column gap-2 text-center">
+                            <span class="fs-7 text-red fw-bold">TOTAL</span>
+                            <div class="donut-red" style="--percentage: 20%;">
+                                <span class="percentage fs-4 text-red">20</span>
+                            </div>
+                            <span class="fs-7 text-red fw-bold">PADAM</span>
+                        </div>
+                        <div class="flex d-flex flex-column gap-2 text-center">
+                            <span class="fs-7 text-blue fw-bold">TOTAL</span>
+                            <div class="donut" style="--percentage: 80%;">
+                                <span class="percentage fs-4 text-blue">80</span>
+                            </div>
+                            <span class="fs-7 text-blue fw-bold">NYALA</span>
+                        </div>
+                        <div class="flex d-flex flex-column gap-2 text-center">
+                            <span class="fs-7 text-orange fw-bold">TOTAL</span>
+                            <div class="donut-orange" style="--percentage: 80%;">
+                                <span class="percentage fs-4 text-orange">80%</span>
+                            </div>
+                            <span class="fs-7 text-orange fw-bold">PERSENTASE</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /kinerja-->
+                <div class="cyber-card">
+                    <div class="stat-header d-flex justify-content-between align-items-center">
+                        <span><i class="bi bi-diagram-3-fill"></i> LOG Gangguan</span>
+                        <span class="status-pill pill-nyala">230 titik</span>
+                    </div>
+                    <!-- table log -->
+                     <div class="log-tabs-container">
+                        <button class="log-tab-btn active">GI</button><button class="log-tab-btn">TRAFO</button><button class="log-tab-btn">PENYULANG</button><button class="log-tab-btn">GARDU DIST</button>
+                    </div>
+                    <div class="custom-scroll">
+                        <div class="table-responsive">
+                            <div class="table">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">GI</th>
+                                        <th scope="col" class="text-center">Padam</th>
+                                        <th scope="col" class="text-center">Nyala</th>
+                                        <th scope="col" class="text-center">AET</th>
+                                        <th scope="col" class="text-center">Wilayah</th>
+                                        <th scope="col" class="text-end">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">GI Kemayoran</th>
+                                        <td class="text-center">18:00</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">21:30</td>
+                                        <td class="text-center">Jakpus</td>
+                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                    </tr>
+
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- log gangguan -->
+
+
+            </div>
+
+
+            
+        </div>
+    </section>
+
+    <!-- section 3-->
+    <section>
+        <!-- rekap -->
+         <div class="row g-3 mb-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="indicator-card bg-red rounded-3 shadow2">
+                    <span class="ok-badge">OK</span>
+                    <div class="label-mini fs-6 text-white"><i class="bi bi-stopwatch"></i> SAIDI</div>
+                    <div class="val-main text-yellow fs-4">33,4 menit</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="indicator-card bg-cyan rounded-3 shadow2">
+                    <span class="ok-badge">OK</span>
+                    <div class="label-mini fs-6 text-white"><i class="bi bi-graph-up"></i> SAIFI</div>
+                    <div class="val-main text-yellow fs-4">0,42 kali</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="indicator-card bg-orange rounded-3 shadow2">
+                    <span class="ok-badge">OK</span>
+                    <div class="label-mini fs-6 text-white"><i class="bi bi-speedometer"></i> ENS</div>
+                    <div class="val-main text-yellow fs-4">1.930,29 MWh</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="indicator-card bg-green rounded-3 shadow2">
+                    <span class="ok-badge">OK</span>
+                    <div class="label-mini fs-6 text-white"><i class="bi bi-currency-dollar"></i> RUPIAH</div>
+                    <div class="val-main text-yellow fs-4">Rp 2,01 M</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- chart saidi-saifi-ens-rp-->
+         <div class="row g-3 mb-5">
+			<div class="col-md-6">
+				<div class="chart-container-inner bg-white rounded-3 mb-2 shadow2">
+					<div class="chart-header">
+						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-stopwatch text-red"></i> SAIDI PER UP3 (MENIT)</div>
+						<div class="total-uid">
+							<small class="d-block fs-7">TOTAL UID</small>
+							<span class="fs-7 fw-semibold text-red">195,1 mnt</span>
+						</div>
+					</div>
+					<div id="chartSaidi" style="height: 200px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner bg-white rounded-3 mb-2 shadow2">
+					<div class="chart-header">
+						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-graph-up text-cyan"></i> SAIFI PER UP3 (KALI)</div>
+						<div class="total-uid">
+							<small class="d-block fs-7">TOTAL UID</small>
+							<span class="fs-7 fw-semibold text-cyan">2,57 kali</span>
+						</div>
+					</div>
+					<div id="chartSaifi" style="height: 200px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner bg-white rounded-3 mb-2 shadow2">
+					<div class="chart-header">
+						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-speedometer text-orange"></i> ENS PER UP3 (MWH)</div>
+						<div class="total-uid">
+							<small class="d-block fs-7">TOTAL UID</small>
+							<span class="fs-7 fw-semibold text-orange">2.069,90 MWh</span>
+						</div>
+					</div>
+					<div id="chartEns" style="height: 200px;"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container-inner bg-white rounded-3 mb-2 shadow2">
+					<div class="chart-header">
+						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-currency-dollar text-green"></i> RUPIAH PER UP3 (MILYAR)</div>
+						<div class="total-uid">
+							<small class="d-block fs-7">TOTAL UID</small>
+							<span class="fs-7 fw-semibold text-green">Rp 2,14 Milyar</span>
+						</div>
+					</div>
+					<div id="chartRupiah" style="height: 200px;"></div>
+				</div>
+			</div>
+		</div>
+    </section>
+    
+
+    <!-- section 4-->
+    <section class="cyber-card mb-5">
+		<div class="d-flex justify-content-between mb-4">
+			<div class="stat-header"><i class="bi bi-person-raised-hand"></i> Detail Pelanggan terdampak</div>
+			<div class="fs-8">Periode: Mei 2026</div>
+		</div>
+		
+		<div class="table-responsive">
+            <div class="table">
+                <table class="table table-sm table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Gardu</th>
+                        <th scope="col" class="text-center">Tipe</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-end">UP3</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-red">VVIP</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-orange">VIP</span></td>
+                        <td class="text-center"><span class="status-pill pill-nyala">Nyala</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-orange">VIP</span></td>
+                        <td class="text-center"><span class="status-pill pill-nyala">Nyala</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-orange">VIP</span></td>
+                        <td class="text-center"><span class="status-pill pill-nyala">Nyala</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-blue">KTT</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-blue">KTT</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Jakarta Pusat</td>
+                        <td>GD-JKT-7290</td>
+                        <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
+                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
+                        <td class="text-end">UP3 Menteng</td>
+                    </tr>
+
+                </tbody>
+                </table>
+            </div>
+        </div>
+	</section>
+
+    <footer class="text-center font-mono text-cyan py-2">© 2026 PT PLN (Persero) UP2D Jakarta — Integrated Command Center</footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        var map = L.map('map').setView([-6.2088, 106.8456], 11);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        
+		
+		// Konfigurasi Highcharts agar warnanya pas
+		const commonOptions = {
+			chart: { backgroundColor: 'transparent', type: 'column', marginTop: 10 },
+			title: { text: null },
+			xAxis: { 
+				categories: ['UP3 Menteng', 'UP3 Kbn Jeruk', 'UP3 Tj. Priok', 'UP3 Lenteng A.', 'UP3 Pondok K.', 'UP3 Bandengan'],
+				labels: { style: { color: '#64748b', fontSize: '9px' } },
+				lineWidth: 1, lineColor: '#D5DBEA'
+			},
+			yAxis: { 
+				title: { text: null }, 
+				gridLineColor: 'rgba(12, 45, 68, 0.1)',
+				labels: { style: { color: '#64748b', fontSize: '9px' } }
+			},
+			legend: { enabled: false },
+			credits: { enabled: false },
+			plotOptions: {
+				column: { 
+					borderRadius: 1, 
+					borderWidth: 0,
+					dataLabels: { 
+						enabled: true, 
+						style: { fontSize: '14px', color: '#1E2129', textOutline: 'none' } 
+					} 
+				}
+			}
+		};
+
+		Highcharts.chart('areaChart', {
+			chart: { backgroundColor: 'transparent', type: 'areaspline', marginTop: 30 },
+			title: { text: null },
+			xAxis: { 
+				categories: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', 'Live'],
+				labels: { style: { color: '#64748b', fontSize: '9px' } },
+				lineColor: '#D5DBEA'
+			},
+			yAxis: { 
+				title: { text: null }, 
+				gridLineColor: 'rgba(12, 45, 68, 0.1)',
+				labels: { style: { color: '#64748b', fontSize: '9px' } }
+			},
+			legend: { 
+				enabled: true, 
+				itemStyle: {  fontSize: '9px' },
+				align: 'right', verticalAlign: 'top', floating: true, y: -10
+			},
+			credits: { enabled: false },
+			plotOptions: { 
+				areaspline: { 
+					fillOpacity: 0.15, 
+					marker: { enabled: false }, 
+					lineWidth: 2,
+					dataLabels: { enabled: true, style: { fontSize: '8px', color: '#e2e8f0', textOutline: 'none' } }
+				} 
+			},
+			series: [
+				{ name: 'Beban Nyala (MW)', data: [800, 780, 850, 910, 890, 840, 829.5], color: '#0eb7ce' },
+				{ name: 'Beban Padam (MW)', data: [20, 15, 80, 120, 95, 100, 104.7], color: '#FF3D57' }
+			]
+		});
+
+		Highcharts.chart('chartSaidi', { ...commonOptions, series: [{ data: [28, 42, 35, 25, 33, 30], color: '#FF3D57' }] });
+		Highcharts.chart('chartSaifi', { ...commonOptions, series: [{ data: [0.38, 0.55, 0.49, 0.31, 0.45, 0.40], color: '#0eb7ce' }] });
+		Highcharts.chart('chartEns', { ...commonOptions, series: [{ data: [310, 460, 400, 270, 350, 290], color: '#f58d16' }] });
+		Highcharts.chart('chartRupiah', { ...commonOptions, series: [{ data: [0.32, 0.47, 0.41, 0.28, 0.36, 0.30], color: '#0AB66E' }] });
+
+        // Script untuk membuat tab Log Gangguan berpindah secara otomatis (Auto-rotate)
+        const logTabs = document.querySelectorAll('.log-tab-btn');
+        let activeTabIdx = 0;
+        let rotationTimer;
+
+        function switchLogTab(index) {
+            logTabs.forEach(t => t.classList.remove('active'));
+            logTabs[index].classList.add('active');
+            activeTabIdx = index;
+        }
+
+        function initAutoRotation() {
+            rotationTimer = setInterval(() => {
+                switchLogTab((activeTabIdx + 1) % logTabs.length);
+            }, 5000); // Berpindah setiap 5 detik
+        }
+
+        logTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                switchLogTab(index);
+                clearInterval(rotationTimer);
+                initAutoRotation(); // Reset timer agar tidak bentrok dengan klik manual
+            });
+        });
+
+        initAutoRotation();
+    </script>
+</body>
+</html>
