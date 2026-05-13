@@ -105,7 +105,7 @@ background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+
 
         /* --- Header Styles --- */
         .main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .logo-box { margin-right: 15px; box-shadow: 0 0 15px var(--neon-blue); }
+        .logo-box { margin-right: 15px; box-shadow: 0 0 15px var(--neon-cyan); }
         .btn-cyber { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); font-size: 10px; font-weight: 700; padding: 5px 15px; }
         .btn-cyber.active { background: rgba(0, 242, 255, 0.2); }
 
