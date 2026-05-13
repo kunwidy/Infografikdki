@@ -69,6 +69,11 @@
         .bg-blue { background: var(--neon-blue); }
         .bg-cyan { background: var(--neon-cyan); }
         .bg-orange { background: var(--neon-orange); }
+        .bg-yellow { background: #ffef62; }
+        .bg-grey { background: rgba(0,0,0,0.08); }
+        .bg-white { background: var(--white); }
+        .bg-dark { background: var(--dark); }
+
 
         .gradient-blue { 
              background: linear-gradient(45deg, #3b90ff 45%, #00cbe6 100%);
@@ -81,8 +86,8 @@
          
         .gradient-cyan { 
             background: #0cebeb;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
          }
         .gradient-orange { background: linear-gradient(90deg, #ffab00 0%, #ff6f00 100%); } 
@@ -142,7 +147,7 @@ background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+
         .p-item-stats { font-size: 11px; font-weight: 700; }
         
         .p-progress-container { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
-        .p-progress-bg { flex: 1; height: 5px; background: #c02929; border-radius: 10px; overflow: hidden; position: relative; }
+        .p-progress-bg { flex: 1; height: 7px; background: #c02929; border-radius: 10px; overflow: hidden; position: relative; }
         .p-progress-fill { height: 100%; border-radius: 10px; }
         .p-sla-val { font-size: 10px; font-weight: 800; min-width: 35px; text-align: right; }
         .p-padam-info { color: var(--neon-red); font-size: 10px; font-weight: 700; }
@@ -167,14 +172,18 @@ background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+
         .pill-green { color: var(--white); background: var(--neon-green);}
         .pill-blue { color: var(--white); background: var(--neon-blue);}
         .pill-cyan { color: var(--white); background: var(--neon-cyan);}
-        .pill-orange { color: var(--white); background: var(--neon-orange);}    
+        .pill-orange { color: var(--white); background: var(--neon-orange);}   
+        .pill-l-orange { border-color: var(--neon-orange); color: var(--neon-orange); background: var(--light-orange);} 
+        .pill-l-blue { border-color: var(--neon-blue); color: var(--neon-blue); background: var(--light-blue);}
+        .pill-l-green { border-color: var(--neon-green); color: var(--neon-green); background: var(--light-green);}
+        .pill-l-cyan { border-color: var(--neon-cyan); color: var(--neon-cyan); background: var(--light-cyan);}
 
 
         #map { height: 350px; border-radius: 2px; }
 		
         /* Container styling */
         .custom-scroll {
-        height: 490px;
+        height: 440px;
         overflow-y: auto;
         }
 
@@ -184,27 +193,24 @@ background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+
         }
 
         .custom-scroll::-webkit-scrollbar-track {
-        background: #081a29; /* Color of the tracking area */
+        background: #d7dad9; /* Color of the tracking area */
         border-radius: 10px;
         }
 
         .custom-scroll::-webkit-scrollbar-thumb {
-        background: var(--neon-blue); /* Bootstrap Primary Color */
+        background: var(--neon-cyan); /* Bootstrap Primary Color */
         border-radius: 10px;
         }
 
         .custom-scroll::-webkit-scrollbar-thumb:hover {
-        background: var(--neon-blue); /* Darker blue on hover */
+        background: var(--neon-cyan); /* Darker blue on hover */
         }
 
         /* Firefox support */
-        .custom-scroll-left {
-        scrollbar-width: thin;
-        scrollbar-color: var(--neon-blue) #081a29;
-        }
+       
 
         .custom-scroll-left {
-        height: 450px;
+        height: 430px;
         overflow-y: auto;
         }
 
@@ -214,23 +220,23 @@ background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+
         }
 
         .custom-scroll-left::-webkit-scrollbar-track {
-        background: #081a29; /* Color of the tracking area */
+        background: #d7dad9; /* Color of the tracking area */
         border-radius: 10px;
         }
 
         .custom-scroll-left::-webkit-scrollbar-thumb {
-        background: var(--neon-blue); /* Bootstrap Primary Color */
+        background: var(--neon-cyan); /* Bootstrap Primary Color */
         border-radius: 10px;
         }
 
         .custom-scroll-left::-webkit-scrollbar-thumb:hover {
-        background: var(--neon-blue); /* Darker blue on hover */
+        background: var(--neon-cyan); /* Darker blue on hover */
         }
 
         /* Firefox support */
         .custom-scroll-left {
         scrollbar-width: thin;
-        scrollbar-color: var(--neon-blue) #081a29;
+        scrollbar-color: var(--neon-cyan);
         }
 	
 

@@ -7,7 +7,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css">
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -42,147 +42,170 @@
     <!-- section 1-->
      <section class="row row-cols-lg-6 row-cols-md-3 row-cols-2 row-cols-1 g-3 mb-4">
         <div class="col">
-            <div class="cyber-card">
-                <div class="stat-header"><i class="bi bi-activity"></i> Beban</div>
+            <div class="cyber-card border-cyan">
+                <div class="stat-header text-center"><i class="bi bi-activity"></i> Beban</div>
+                <div class="gradient-green d-block p-2 mb-2 text-center rounded-pill">
+                    <span class="fw-bold fs-7 text-white">Terdampak : 934,21 MW</span>
+                </div>
                 <div class="d-flex mb-1">
-                    <div class="indicator-box gradient-red text-white">
+                    <div class="indicator-box light-red text-red">
                         <small class="d-block fw-bold fs-10">PADAM</small>
-                        <span class="fs-5 fw-medium">104,7<small class="fs-10">MW</small></span>
+                        <span class="fs-5 fw-bold">104,7<small class="fs-10">MW</small></span>
                     </div>
-                    <div class="indicator-box gradient-blue text-white">
+                    <div class="indicator-box light-cyan text-blue">
                         <small class="d-block fw-bold fs-10">NYALA</small>
-                        <span class=" fs-5 fw-medium">829,51<small class="fs-10">MW</small></span>
+                        <span class=" fs-5 fw-bold">829,51<small class="fs-10">MW</small></span>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-fill" style="width: 88.8%"></div>
                 </div>
-                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+                <div class="text-center fs-8">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
             </div>
         </div>
         <div class="col">
-            <div class="cyber-card">
-                <div class="stat-header"><i class="bi bi-activity"></i> GI</div>
+            <div class="cyber-card border-cyan">
+                <div class="stat-header text-center"><i class="bi bi-plugin"></i> GI</div>
+                <div class="gradient-green d-block p-2 mb-2 text-center rounded-pill">
+                    <span class="fw-bold fs-7 text-white">Terdampak : 14</span>
+                </div>
                 <div class="d-flex mb-1">
-                    <div class="indicator-box gradient-red text-white">
+                    <div class="indicator-box light-red text-red">
                         <small class="d-block fw-bold fs-10">PADAM</small>
-                        <span class="fs-5 fw-medium">4</span>
+                        <span class="fs-5 fw-bold">4</span>
                     </div>
-                    <div class="indicator-box gradient-blue text-white">
+                    <div class="indicator-box light-cyan text-blue">
                         <small class="d-block fw-bold fs-10">NYALA</small>
-                        <span class="fs-5 fw-medium">10</span>
+                        <span class="fs-5 fw-bold">10</span>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-fill" style="width: 88.8%"></div>
                 </div>
-                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+                <div class="text-center fs-8">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
             </div>
         </div>
         <div class="col">
-            <div class="cyber-card">
-                <div class="stat-header"><i class="bi bi-activity"></i> Trafo</div>
+            <div class="cyber-card border-cyan">
+                <div class="stat-header text-center"><i class="bi bi-calendar-plus-fill"></i> Trafo</div>
+                <div class="gradient-green d-block p-2 mb-2 text-center rounded-pill">
+                    <span class="fw-bold fs-7 text-white">Terdampak : 83</span>
+                </div>
                 <div class="d-flex mb-1">
-                    <div class="indicator-box gradient-red text-white">
+                    <div class="indicator-box light-red text-red">
                         <small class="d-block fw-bold fs-10">PADAM</small>
-                        <span class="fs-5 fw-medium">16</span>
+                        <span class="fs-5 fw-bold">16</span>
                     </div>
-                    <div class="indicator-box gradient-blue text-white">
+                    <div class="indicator-box light-cyan text-blue">
                         <small class="d-block fw-bold fs-10">NYALA</small>
-                        <span class="fs-5 fw-medium">67</span>
+                        <span class="fs-5 fw-bold">67</span>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-fill" style="width: 88.8%"></div>
                 </div>
-                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+                <div class="text-center fs-8">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
             </div>
         </div>
         <div class="col">
-            <div class="cyber-card">
-                <div class="stat-header"><i class="bi bi-activity"></i> Penyulang</div>
+            <div class="cyber-card border-cyan">
+                <div class="stat-header text-center"><i class="bi bi-bezier2"></i> Penyulang</div>
+                <div class="gradient-green d-block p-2 mb-2 text-center rounded-pill">
+                    <span class="fw-bold fs-7 text-white">Terdampak : 129</span>
+                </div>
                 <div class="d-flex mb-1">
-                    <div class="indicator-box gradient-red text-white">
+                    <div class="indicator-box light-red text-red">
                         <small class="d-block fw-bold fs-10">PADAM</small>
-                        <span class="fs-5 fw-medium">39</span>
+                        <span class="fs-5 fw-bold">39</span>
                     </div>
-                    <div class="indicator-box gradient-blue text-white">
+                    <div class="indicator-box light-cyan text-blue">
                         <small class="d-block fw-bold fs-10">NYALA</small>
-                        <span class="fs-5 fw-medium">90</span>
+                        <span class="fs-5 fw-bold">90</span>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-fill" style="width: 88.8%"></div>
                 </div>
-                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+                <div class="text-center fs-8">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
             </div>
         </div>
         <div class="col">
-            <div class="cyber-card">
-                <div class="stat-header"><i class="bi bi-activity"></i> Gardu Distribusi</div>
+            <div class="cyber-card border-cyan">
+                <div class="stat-header text-center"><i class="bi bi-calculator-fill"></i> Gardu Distribusi</div>
+                <div class="gradient-green d-block p-2 mb-2 text-center rounded-pill">
+                    <span class="fw-bold fs-7 text-white">Terdampak : 318</span>
+                </div>
                 <div class="d-flex mb-1">
-                    <div class="indicator-box gradient-red text-white">
+                    <div class="indicator-box light-red text-red">
                         <small class="d-block fw-bold fs-10">PADAM</small>
-                        <span class="fs-5 fw-medium">77</span>
+                        <span class="fs-5 fw-bold">77</span>
                     </div>
-                    <div class="indicator-box gradient-blue text-white">
+                    <div class="indicator-box light-cyan text-blue">
                         <small class="d-block fw-bold fs-10">NYALA</small>
-                        <span class="fs-5 fw-medium">241</span>
+                        <span class="fs-5 fw-bold">241</span>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-fill" style="width: 88.8%"></div>
                 </div>
-                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+                <div class="text-center fs-8">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
             </div>
         </div>
         <div class="col">
-            <div class="cyber-card">
-                <div class="stat-header"><i class="bi bi-activity"></i> Pelanggan</div>
+            <div class="cyber-card border-cyan">
+                <div class="stat-header text-center"><i class="bi bi-person-fill-x"></i> Pelanggan</div>
+                <div class="gradient-green d-block p-2 mb-2 text-center rounded-pill">
+                    <span class="fw-bold fs-7 text-white">Terdampak : 2.403</span>
+                </div>
                 <div class="d-flex mb-1">
-                    <div class="indicator-box gradient-red text-white">
+                    <div class="indicator-box light-red text-red">
                         <small class="d-block fw-bold fs-10">PADAM</small>
-                        <span class="fs-5 fw-medium">421</span>
+                        <span class="fs-5 fw-bold">421</span>
                     </div>
-                    <div class="indicator-box gradient-blue text-white">
+                    <div class="indicator-box light-cyan text-blue">
                         <small class="d-block fw-bold fs-10">NYALA</small>
-                        <span class="fs-5 fw-medium">1.982</span>
+                        <span class="fs-5 fw-bold">1.982</span>
                     </div>
                 </div>
                 <div class="progress-bar-bg">
                     <div class="progress-fill" style="width: 88.8%"></div>
                 </div>
-                <div class="text-center fs-10">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
+                <div class="text-center fs-8">Pemulihan : <span class="text-cyan fw-bold">88,8%</span> Nyala</div>
             </div>
         </div>
     </section>
      <!-- section 2-->
     <section class="row g-3 mb-5">
         <!-- left -->
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="d-flex flex-column gap-4" >
                 
                 <!-- pelanggan -->
                 <div class="cyber-card">
                     <div class="stat-header d-flex justify-content-between align-items-center mb-4">
                         <span><i class="bi bi-person-bounding-box"></i> PRIORITAS PELANGGAN</span>
-                        <span class="status-pill pill-nyala">230 titik</span>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="priority-list-item bg-red text-dark">
                                 <div class="p-item-header">
                                     <span class="p-item-title text-white"><i class="bi bi-stars"></i> VVIP</span>
-                                    <span class="p-item-stats text-yellow">1/18</span>
+                                    <span class="p-item-stats text-yellow">5/20</span>
                                 </div>
-                                <span class="p-item-subtitle text-yellow">Istana, Setneg, Obvitnas</span>
-                                <div class="p-progress-container pt-1">
+                                <span class="fs-7 text-white">Terdampak : 25 Lokasi</span>
+                                <div class="p-progress-container pt-1 mb-2">
                                     <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
                                     <span class="p-sla-val text-yellow">93,8%</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center text-white">
-                                    <span class="fs-7 fw-semibold">● 1 padam</span>
-                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                    <div class="fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-padam">Padam</span>
+                                        <span class="text-white d-block pt-1">5 lokasi</span>
+                                    </div>
+                                    <div class="text-end fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-padam">Nyala</span>
+                                        <span class="text-white d-block pt-1">20 lokasi</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,16 +213,22 @@
                             <div class="priority-list-item bg-orange">
                                 <div class="p-item-header">
                                     <span class="p-item-title text-white"><i class="bi bi-star-fill"></i> VIP</span>
-                                    <span class="p-item-stats text-yellow">1/18</span>
+                                    <span class="p-item-stats text-yellow">14/35</span>
                                 </div>
-                                <span class="p-item-subtitle text-yellow">Istana, Setneg, Obvitnas</span>
+                                <span class="fs-7 text-white">Terdampak : 49 Lokasi</span>
                                 <div class="p-progress-container pt-1">
-                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
-                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 60.5%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">60,5%</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center text-white">
-                                    <span class="fs-7 fw-semibold">● 1 padam</span>
-                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                    <div class="fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-l-orange">Padam</span>
+                                        <span class="text-white d-block pt-1">14 lokasi</span>
+                                    </div>
+                                    <div class="text-end fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-l-orange">Nyala</span>
+                                        <span class="text-white d-block pt-1">35 lokasi</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -207,16 +236,22 @@
                             <div class="priority-list-item bg-blue ">
                                 <div class="p-item-header">
                                     <span class="p-item-title text-white"><i class="bi bi-star-half"></i> KTT </span>
-                                    <span class="p-item-stats text-light-blue">1/18</span>
+                                    <span class="p-item-stats text-light-blue">0/50</span>
                                 </div>
-                                <span class="p-item-subtitle text-light-blue">Istana, Setneg, Obvitnas</span>
+                                <span class="fs-7 text-white">Terdampak : 0 Lokasi</span>
                                 <div class="p-progress-container pt-1">
-                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
-                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 100%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">100%</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center text-white">
-                                    <span class="fs-7 fw-semibold">● 1 padam</span>
-                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                    <div class="fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-l-blue">Padam</span>
+                                        <span class="text-white d-block pt-1">0 lokasi</span>
+                                    </div>
+                                    <div class="text-end fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-l-blue">Nyala</span>
+                                        <span class="text-white d-block pt-1">50 lokasi</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -224,16 +259,22 @@
                             <div class="priority-list-item bg-green text-dark">
                                 <div class="p-item-header">
                                     <span class="p-item-title text-white"><i class="bi bi-star"></i> PRIORITAS</span>
-                                    <span class="p-item-stats text-yellow">1/18</span>
+                                    <span class="p-item-stats text-yellow">30/19</span>
                                 </div>
-                                <span class="p-item-subtitle text-yellow">Istana, Setneg, Obvitnas</span>
+                                <span class="fs-7 text-white">Terdampak : 49 Lokasi</span>
                                 <div class="p-progress-container pt-1">
-                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 93.8%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
-                                    <span class="p-sla-val text-yellow">93,8%</span>
+                                    <div class="p-progress-bg"><div class="p-progress-fill" style="width: 43.6%; background: linear-gradient(90deg, #ffe4d4, #00ffdd);"></div></div>
+                                    <span class="p-sla-val text-yellow">43,6%</span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center text-white">
-                                    <span class="fs-7 fw-semibold">● 1 padam</span>
-                                    <span class="fs-7 fw-semibold">● 17 Nyala</span>
+                                    <div class="fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-l-green">Padam</span>
+                                        <span class="text-white d-block pt-1">30 lokasi</span>
+                                    </div>
+                                    <div class="text-end fs-7 fw-semibold text-white">
+                                        <span class="status-pill pill-l-green">Nyala</span>
+                                        <span class="text-white d-block pt-1">19 lokasi</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -243,21 +284,24 @@
 
                 <div class="cyber-card">
                     <div class="stat-header"><i class="bi bi-tools"></i> RANKING GARDU UP3 TERDAMPAK</div>
+                    <div style="height:430px" class="overflow-auto">
                     <div class="table-responsive mx-0">
-                        <table class="table table-sm align-middle table-row-dashed fs-8 mb-0">
+                        <table class="table table-sm align-middle fs-8 mb-0">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>UP3</th>
+                                    <th class="text-center">Terdampak</th>
                                     <th class="text-center">Padam</th>
                                     <th class="text-center">Nyala</th>
-                                    <th class="text-end">Persentase</th>
+                                    <th class="text-end">%</th>
                                 </tr>
                             </thead>
-                            <tbody class="custom-scroll-left">
+                            <tbody>
                                 <tr>
                                     <td>1</td>
                                     <td>Menteng</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">112</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">100</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">12</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -265,6 +309,7 @@
                                 <tr>
                                     <td>2</td>
                                     <td>Bulungan</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">102</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">80</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">22</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -272,13 +317,15 @@
                                 <tr>
                                     <td>3</td>
                                     <td>Kebon Jeruk</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">100</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">75</span></td>
-                                    <td class="text-center"><span class="status-pill pill-blue fs-8">28</span></td>
+                                    <td class="text-center"><span class="status-pill pill-blue fs-8">25</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
                                     <td>Cengkareng</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">91</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">60</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">31</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -286,6 +333,7 @@
                                 <tr>
                                     <td>5</td>
                                     <td>Tanjung Priok</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">88</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">50</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">38</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -293,6 +341,7 @@
                                 <tr>
                                     <td>6</td>
                                     <td>Bandengan</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">88</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">48</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">40</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -300,6 +349,7 @@
                                 <tr>
                                     <td>7</td>
                                     <td>Cempaka Putih</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">80</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">30</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">50</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -307,6 +357,7 @@
                                 <tr>
                                     <td>8</td>
                                     <td>Kramat Jati</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">136</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">8</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">56</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -314,6 +365,7 @@
                                 <tr>
                                     <td>9</td>
                                     <td>Jatinegara</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">72</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">4</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">68</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -321,6 +373,7 @@
                                 <tr>
                                     <td>10</td>
                                     <td>Pondok Kopi</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">74</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">2</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">72</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
@@ -328,264 +381,204 @@
                                 <tr>
                                     <td>11</td>
                                     <td>Bintaro</td>
+                                    <td class="text-center"><span class="status-pill pill-orange fs-8">81</span></td>
                                     <td class="text-center"><span class="status-pill pill-red fs-8">1</span></td>
                                     <td class="text-center"><span class="status-pill pill-blue fs-8">80</span></td>
                                     <td class="text-end"><span class="status-pill pill-cyan fs-8">83%</span></td>
                                 </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td>Menteng</td>
-                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
-                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
-                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>Menteng</td>
-                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
-                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
-                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td>Menteng</td>
-                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
-                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
-                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>15</td>
-                                    <td>Menteng</td>
-                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
-                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
-                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>16</td>
-                                    <td>Menteng</td>
-                                    <td class="text-center"><span class="status-pill pill-green fs-8">0</span></td>
-                                    <td class="text-center"><span class="status-pill pill-blue fs-8">83</span></td>
-                                    <td class="text-end"><span class="status-pill pill-cyan fs-8">100%</span></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
+                    </div>
                     </div>
                 </div>    
             </div>
         </div>
 		
 		<!-- center -->
-        <div class="col-md-4 d-flex flex-column gap-3">
-            <!-- map -->
-            <div class="cyber-card p-0 overflow-hidden">
-                <div class="chart-container-inner" style="border: none; background: transparent;">
-                    <div class="stat-header mb-2 fs-7 text-center"><i class="bi bi-geo-fill"></i> Peta Padam & Nyala</div>
-                    <div id="map" style="height: 500px;"></div>
+        <div class="col-md-9">
+
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <!-- map -->
+                    <div class="cyber-card p-0 overflow-hidden">
+                        <div class="chart-container-inner" style="border: none; background: transparent;">
+                            <div class="stat-header mb-2 fs-7 text-center"><i class="bi bi-geo-fill"></i> Peta Padam & Nyala</div>
+                            <div id="map" style="height: 500px;"></div>
+                        </div>
+                        
+                    </div>
+                    <!-- /map -->
                 </div>
-                
+
+                <div class="col-md-4">
+                    <div class="cyber-card">
+                        <div class="stat-header d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-diagram-3-fill"></i> LOG Gangguan</span>
+                            <span class="status-pill pill-nyala">230 titik</span>
+                        </div>
+                        <!-- table log -->
+                        <div class="log-tabs-container">
+                            <button class="log-tab-btn active">GI</button><button class="log-tab-btn">TRAFO</button><button class="log-tab-btn">PENYULANG</button><button class="log-tab-btn">GARDU DIST</button>
+                        </div>
+                        <div style="height:445px" class="overflow-auto">
+                            <div class="table-responsive">
+                                <div class="table">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">GI</th>
+                                                <th scope="col" class="text-center">Padam</th>
+                                                <th scope="col" class="text-center">Nyala</th>
+                                                <th scope="col" class="text-center">AET</th>
+                                                <th scope="col" class="text-center">Wilayah</th>
+                                                <th scope="col" class="text-end">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-group-divider">
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Kemayoran</th>
+                                                <td class="text-center">18:00</td>
+                                                <td class="text-center">-</td>
+                                                <td class="text-center">21:30</td>
+                                                <td class="text-center">Jakpus</td>
+                                                <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- log gangguan -->
+                </div>
+
+                <div class="col-md-12">
+                     <!-- chart -->
+                    <div class="cyber-card p-0 overflow-hidden">
+                        <div class="chart-container-inner">
+                            <div class="stat-header mb-2 text-center"><i class="bi bi-clipboard2-data-fill"></i> Kurva Beban Padam & Nyala</div>
+                            <div id="areaChart" style="height: 250px;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-             <!-- chart -->
-            <div class="cyber-card p-0 overflow-hidden">
-                <div class="chart-container-inner">
-                    <div class="stat-header mb-2 text-center"><i class="bi bi-clipboard2-data-fill"></i> Kurva Beban Padam & Nyala</div>
-                    <div id="areaChart" style="height: 250px;"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- right -->
-        <div class="col-md-4">
-            <div class="d-flex flex-column gap-4" >
-                <!-- kinerja-->
-                <div class="cyber-card">
-                    <div class="stat-header d-flex justify-content-between align-items-center mb-4">
-                        <span><i class="bi bi-speedometer"></i> KINERJA</span>
-                        <span class="status-pill pill-nyala">230 titik</span>
-                    </div>
-                    <div class="d-flex justify-content-evenly mb-4">
-                        <div class="flex d-flex flex-column gap-2 text-center">
-                            <span class="fs-7 text-red fw-bold">TOTAL</span>
-                            <div class="donut-red" style="--percentage: 20%;">
-                                <span class="percentage fs-4 text-red">20</span>
-                            </div>
-                            <span class="fs-7 text-red fw-bold">PADAM</span>
-                        </div>
-                        <div class="flex d-flex flex-column gap-2 text-center">
-                            <span class="fs-7 text-blue fw-bold">TOTAL</span>
-                            <div class="donut" style="--percentage: 80%;">
-                                <span class="percentage fs-4 text-blue">80</span>
-                            </div>
-                            <span class="fs-7 text-blue fw-bold">NYALA</span>
-                        </div>
-                        <div class="flex d-flex flex-column gap-2 text-center">
-                            <span class="fs-7 text-orange fw-bold">TOTAL</span>
-                            <div class="donut-orange" style="--percentage: 80%;">
-                                <span class="percentage fs-4 text-orange">80%</span>
-                            </div>
-                            <span class="fs-7 text-orange fw-bold">PERSENTASE</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /kinerja-->
-                <div class="cyber-card">
-                    <div class="stat-header d-flex justify-content-between align-items-center">
-                        <span><i class="bi bi-diagram-3-fill"></i> LOG Gangguan</span>
-                        <span class="status-pill pill-nyala">230 titik</span>
-                    </div>
-                    <!-- table log -->
-                     <div class="log-tabs-container">
-                        <button class="log-tab-btn active">GI</button><button class="log-tab-btn">TRAFO</button><button class="log-tab-btn">PENYULANG</button><button class="log-tab-btn">GARDU DIST</button>
-                    </div>
-                    <div class="custom-scroll">
-                        <div class="table-responsive">
-                            <div class="table">
-                                <table class="table table-sm">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">GI</th>
-                                        <th scope="col" class="text-center">Padam</th>
-                                        <th scope="col" class="text-center">Nyala</th>
-                                        <th scope="col" class="text-center">AET</th>
-                                        <th scope="col" class="text-center">Wilayah</th>
-                                        <th scope="col" class="text-end">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GI Kemayoran</th>
-                                        <td class="text-center">18:00</td>
-                                        <td class="text-center">-</td>
-                                        <td class="text-center">21:30</td>
-                                        <td class="text-center">Jakpus</td>
-                                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
-                                    </tr>
-
-                                </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- log gangguan -->
-
-
-            </div>
-
-
             
         </div>
+      
     </section>
 
     <!-- section 3-->
@@ -627,7 +620,7 @@
 			<div class="col-md-6">
 				<div class="chart-container-inner bg-white rounded-3 mb-2 shadow2">
 					<div class="chart-header">
-						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-stopwatch text-red"></i> SAIDI PER UP3 (MENIT)</div>
+						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-stopwatch text-red"></i> SAIDI PER UP3 <small>(Menit/Pelanggan)</small></div>
 						<div class="total-uid">
 							<small class="d-block fs-7">TOTAL UID</small>
 							<span class="fs-7 fw-semibold text-red">195,1 mnt</span>
@@ -639,7 +632,7 @@
 			<div class="col-md-6">
 				<div class="chart-container-inner bg-white rounded-3 mb-2 shadow2">
 					<div class="chart-header">
-						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-graph-up text-cyan"></i> SAIFI PER UP3 (KALI)</div>
+						<div class="chart-title fs-6 fw-semibold"><i class="bi bi-graph-up text-cyan"></i> SAIFI PER UP3 <small>(Kali/Pelanggan)</small></div>
 						<div class="total-uid">
 							<small class="d-block fs-7">TOTAL UID</small>
 							<span class="fs-7 fw-semibold text-cyan">2,57 kali</span>
@@ -689,93 +682,104 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Nama Konsumen</th>
                         <th scope="col">Lokasi</th>
-                        <th scope="col">Gardu</th>
+                        <th scope="col">Gardu Distribusi</th>
+                        <th scope="col" class="text-center">UP3</th>
                         <th scope="col" class="text-center">Tipe</th>
-                        <th scope="col" class="text-center">Status</th>
-                        <th scope="col" class="text-end">UP3</th>
+                        <th scope="col" class="text-end">Status</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
                         <th scope="row">1</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-red">VVIP</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-orange">VIP</span></td>
-                        <td class="text-center"><span class="status-pill pill-nyala">Nyala</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-orange">VIP</span></td>
-                        <td class="text-center"><span class="status-pill pill-nyala">Nyala</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
                     </tr>
                     <tr>
                         <th scope="row">4</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-orange">VIP</span></td>
-                        <td class="text-center"><span class="status-pill pill-nyala">Nyala</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-nyala">Nyala</span></td>
                     </tr>
                     <tr>
                         <th scope="row">5</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-blue">KTT</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
                     <tr>
                         <th scope="row">6</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-blue">KTT</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
                     <tr>
                         <th scope="row">7</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
                     <tr>
                         <th scope="row">8</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
                     <tr>
                         <th scope="row">9</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
                     <tr>
                         <th scope="row">10</th>
+                        <td>PT Gemilang</td>
                         <td>Jakarta Pusat</td>
                         <td>GD-JKT-7290</td>
+                        <td class="text-center">Menteng</td>
                         <td class="text-center"><span class="status-pill pill-green">Prioritas</span></td>
-                        <td class="text-center"><span class="status-pill pill-padam">Padam</span></td>
-                        <td class="text-end">UP3 Menteng</td>
+                        <td class="text-end"><span class="status-pill pill-padam">Padam</span></td>
                     </tr>
 
                 </tbody>
@@ -786,12 +790,40 @@
 
     <footer class="text-center font-mono text-cyan py-2">© 2026 PT PLN (Persero) UP2D Jakarta — Integrated Command Center</footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script>
-        var map = L.map('map').setView([-6.2088, 106.8456], 11);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script type="text/javascript">
         
+
+        var map = L.map( 'map', {
+            center: [-6.2088, 106.8456],
+            zoom: 9,
+        });
+
+         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+             subdomains: ['a','b','c']
+        }).addTo(map);
+
+         // Just for testing, add some markers.
+        var marks = [
+            { text: 'GI Menteng', latlng: [-6.1843, 106.8236], },
+            { text: 'GI Gambir', latlng: [-6.1754, 106.8272], },
+            { text: 'GI Cawang', latlng: [-6.2488, 106.8685], },
+            { text: 'GI Kemayoran', latlng: [-6.1628, 106.8436], },
+        ];
+
+        for(var i = 0; i < marks.length; i++) {
+            L.marker(marks[i].latlng)
+                .bindTooltip(marks[i].text, {
+                    direction: 'top',
+                    sticky: false,
+                    offset: [0, -15],
+                })
+                .addTo(map);
+        };
 		
 		// Konfigurasi Highcharts agar warnanya pas
 		const commonOptions = {
@@ -882,6 +914,12 @@
                 clearInterval(rotationTimer);
                 initAutoRotation(); // Reset timer agar tidak bentrok dengan klik manual
             });
+        });
+
+        initAutoRotation();
+    </script>
+</body>
+</html>     });
         });
 
         initAutoRotation();
